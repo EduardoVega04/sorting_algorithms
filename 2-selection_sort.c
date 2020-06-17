@@ -23,7 +23,7 @@ void swap_integers(int *a, int *b)
 void selection_sort(int *array, size_t size)
 {
     size_t i, j;
-    int min = 0;        
+    size_t min = 0;        
 
     if (array == NULL)
         return;    
