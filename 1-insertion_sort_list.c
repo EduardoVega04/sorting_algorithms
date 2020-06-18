@@ -38,19 +38,16 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !(*list))
 		return;
 
-	actual = *list;
-	while (actual->next != NULL)
+	for (actual = *list; actual != NULL; actual = actual->next)
 	{
-		key = actual->next;
-
-		while (key->prev && key->prev->n > key->n)
+		while (actual->next != NULL && actual->n > actual->next->n)
 		{
-			swap_nodes(list, &key->prev, &key);
-			print_list(*list);
+			key = actual->next;
+			while (key->prev != NULL && key->n < key->prev->n)
+			{
+				swap_nodes(list, &key->prev, &key);
+				print_list(*list);
+			}
 		}
-
-		if (actual->next && actual->n < actual->next->n)
-			actual = actual->next;
 	}
 }
-
